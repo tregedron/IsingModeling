@@ -26,7 +26,7 @@ void print_matrix(double** matrix, int N)
 	cout << endl;
 }
 
-//функция считающая матрицу взаимодействия и дистанций раз и навсегда
+//функция, считающая матрицу взаимодействия и дистанций раз и навсегда.
 void calc_Jmatrix(double** Jmatrix, int N, double a, double b, double** DistMatrix)
 {
 	double r = 0;
@@ -66,8 +66,7 @@ void calc_Jmatrix(double** Jmatrix, int N, double a, double b, double** DistMatr
 
 
 
-//Функция, расчитывающая энергию системы. Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии.
-//the function calculating the energy in system. Parameters: pointer to array of spins, it's size, pointer to energy variable.
+//Функция, расчитывающая энергию системы "все со всеми, J=1". Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии.
 void calc_energy(double* spins_array, int N, double* Energy)
 {
 	for (int i = 0; i < N; i++)
@@ -81,6 +80,7 @@ void calc_energy(double* spins_array, int N, double* Energy)
 	cout << "Start Energy: " << *Energy << endl;
 }
 
+//Функция, расчитывающая энергию системы с матрицей взаимодействия. Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии, матрица взаимодействия.
 void calc_energy_Jmatrix(double* spins_array, int N, double* Energy, double** Jmatrix)
 {
 	for (int i = 0; i < N; i++)
@@ -94,8 +94,7 @@ void calc_energy_Jmatrix(double* spins_array, int N, double* Energy, double** Jm
 	cout << "Start Energy: " << *Energy << endl;
 }
 
-//Функция, меняющая случайно один из спинов и расчитывающая изменение энергии при таком изменении. Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии,
-//
+//Функция, меняющая случайно один из спинов, расчитывающая изменение энергии при таком изменении и принимающая шаг. Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии,
 void change_spin(double* spins_array, int N, double* Energy, double* dEnergy, int* success)
 {
 	//выбрали спин, перещёлкнули его
@@ -129,8 +128,8 @@ void change_spin(double* spins_array, int N, double* Energy, double* dEnergy, in
 	}
 }
 
-//Функция, меняющая случайно один из спинов и расчитывающая изменение энергии при таком изменении. Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии,
-//
+//Функция, меняющая случайно один из спинов, расчитывающая изменение энергии при таком изменении и принимающая шаг. Параметры: указатель на массив спинов, его размер, указатель на переменную для хранения изменения энергии
+//указатель на переменную подсчёта числа успешных принятий шагов и матрицу взаимодействий.
 void change_spin_Jmatrix(double* spins_array, int N, double* Energy, double* dEnergy, int* success, double** Jmatrix)
 {
 	//выбрали спин, перещёлкнули его
